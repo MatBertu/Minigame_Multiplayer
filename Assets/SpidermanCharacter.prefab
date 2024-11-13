@@ -545,7 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 2988120683898526602}
   TotalWords: 3
-  ApplyTiming: 2
+  ApplyTiming: 0
   SyncSettings: 79
   StateHashes: 0000000084ca1cc0f9c6230b1c6a54339e2518b671a7e1076b36dbedb1afdc305a6c54cd83cf66dc41bda77e
   TriggerHashes: 00000000
