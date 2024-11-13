@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnSpiderman();
+        
     }
 
-    private void SpawnSpiderman()
+    public void SpawnSpiderman()
     {
         GameObject spidermanInstantiated = Instantiate(spidermanPrefab, spawnPoint.position, spawnPoint.rotation);
         playerFollowCamera.Follow = spidermanInstantiated.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;

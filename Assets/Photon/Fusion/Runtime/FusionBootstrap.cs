@@ -1,4 +1,4 @@
-namespace Fusion {
+  namespace Fusion {
   using System;
   using Fusion.Sockets;
   using System.Collections;
