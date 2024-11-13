@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9db8919ac936a4abb7f7510cc4c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spidermanPrefab: {fileID: 7738439751665561284, guid: fc921b8db482e9d41b8abd95ace387d2,
+  spidermanPrefab: {fileID: 7221314192320057903, guid: fc921b8db482e9d41b8abd95ace387d2,
     type: 3}
   spawnPoint: {fileID: 1262337718}
   playerFollowCamera: {fileID: 572466039}
