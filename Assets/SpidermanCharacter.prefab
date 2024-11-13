@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 2383650793609606504}
   - component: {fileID: 4893774249272985502}
   - component: {fileID: 6388069428265223109}
+  - component: {fileID: 7221314192320057903}
   m_Layer: 8
   m_Name: SpidermanCharacter
   m_TagString: Player
@@ -493,6 +494,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectedCoins: 0
+--- !u!114 &7221314192320057903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7738439751665561284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3835215695
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []
 --- !u!1001 &5380813700559407500
 PrefabInstance:
   m_ObjectHideFlags: 0

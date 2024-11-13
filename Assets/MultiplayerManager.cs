@@ -30,7 +30,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     public void OnConnectedToServer(NetworkRunner runner)
     {
         Debug.Log("Sono connesso!");
-        gameManager.SpawnSpiderman();
+        gameManager.SpawnSpiderman(networkRunner);
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)

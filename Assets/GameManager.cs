@@ -1,4 +1,5 @@
 using Cinemachine;
+using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject spidermanPrefab;
+    public NetworkObject spidermanPrefab;
     public Transform spawnPoint;
     public CinemachineVirtualCamera playerFollowCamera;
     // Start is called before the first frame update
@@ -16,9 +17,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SpawnSpiderman()
+    public void SpawnSpiderman(Fusion.NetworkRunner networkRunner)
     {
-        GameObject spidermanInstantiated = Instantiate(spidermanPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        NetworkObject spidermanInstantiated = networkRunner.Spawn(spidermanPrefab, spawnPoint.position, spawnPoint.rotation);
         playerFollowCamera.Follow = spidermanInstantiated.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
     }
 
