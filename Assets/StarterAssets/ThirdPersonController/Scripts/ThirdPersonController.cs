@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using Fusion;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -12,7 +13,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : NetworkBehaviour
     {
         public InputActionAsset myInputActionAsset;
         [Header("Player")]
@@ -153,6 +154,7 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
             myInputActionAsset["Dance"].performed += DancePerformedCallback;
+
         }
 
         private void DancePerformedCallback(InputAction.CallbackContext obj)
@@ -224,6 +226,10 @@ namespace StarterAssets
 
         private void Move()
         {
+            if (HasStateAuthority == false)
+            {
+                return;
+            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -297,6 +303,8 @@ namespace StarterAssets
 
         private void JumpAndGravity()
         {
+            if (HasStateAuthority == false) { return; }
+
             if (dancing) { _input.jump = false; }
             if (Grounded)
             {
