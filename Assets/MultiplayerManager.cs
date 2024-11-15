@@ -3,6 +3,7 @@ using Fusion.Sockets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
@@ -31,6 +32,10 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     {
         Debug.Log("Sono connesso!");
         gameManager.SpawnSpiderman(networkRunner);
+        if(networkRunner.ActivePlayers.Count() == 0)
+        {
+            gameManager.SpawnCoins(networkRunner);
+        }
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)

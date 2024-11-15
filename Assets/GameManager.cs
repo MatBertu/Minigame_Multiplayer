@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    public NetworkObject coinPrefab;
     public NetworkObject spidermanPrefab;
     public Transform spawnPoint;
     public CinemachineVirtualCamera playerFollowCamera;
@@ -24,6 +24,13 @@ public class GameManager : MonoBehaviour
         playerFollowCamera.Follow = spidermanInstantiated.GetComponentInChildren<PlayerCameraRoot>().gameObject.transform;
     }
 
+    public void SpawnCoins(Fusion.NetworkRunner networkRunner)
+    {
+        foreach (CoinSpawnPoint coinSpawnPoint in FindObjectsOfType<CoinSpawnPoint>())
+        {
+            NetworkObject coinInstaniated = networkRunner.Spawn(coinPrefab, coinSpawnPoint.gameObject.transform.position, coinSpawnPoint.gameObject.transform.rotation);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
