@@ -23,6 +23,10 @@ public class Character : NetworkBehaviour
                 RefreshCoinText();
             }
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
 
     }
 
