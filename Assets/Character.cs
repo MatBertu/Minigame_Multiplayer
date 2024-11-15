@@ -12,15 +12,13 @@ public class Character : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (HasStateAuthority)
+        if (GetComponent<NetworkObject>().Runner.IsSharedModeMasterClient)
         {
             Coin coin = other.GetComponent<Coin>();
             if (coin != null)
             {
-                coin.GetComponent<NetworkObject>().RequestStateAuthority();
+               
                 FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
-                
-                // Destroy(coin.gameObject);
                 collectedCoins++;
                 RefreshCoinText();
             }
