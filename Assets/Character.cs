@@ -1,22 +1,28 @@
+using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
     public int collectedCoins;
 
     private void OnTriggerEnter(Collider other)
     {
-        Coin coin = other.GetComponent<Coin>();
-        if (coin != null)
+
+        if (HasStateAuthority)
         {
-            Destroy(coin.gameObject);
-            collectedCoins++;
-            RefreshCoinText();
+            Coin coin = other.GetComponent<Coin>();
+            if (coin != null)
+            {
+                Destroy(coin.gameObject);
+                collectedCoins++;
+                RefreshCoinText();
+            }
         }
+
     }
 
     private void RefreshCoinText()
