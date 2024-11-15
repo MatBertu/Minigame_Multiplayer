@@ -12,9 +12,9 @@ public class Character : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        Coin coin = other.GetComponent<Coin>();
         if (GetComponent<NetworkObject>().Runner.IsSharedModeMasterClient)
         {
-            Coin coin = other.GetComponent<Coin>();
             if (coin != null)
             {
                
@@ -25,7 +25,7 @@ public class Character : NetworkBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            coin.gameObject.SetActive(false);
         }
 
     }
