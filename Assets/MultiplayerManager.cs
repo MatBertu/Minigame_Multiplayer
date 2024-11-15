@@ -33,8 +33,8 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
         Debug.Log("Sono connesso!");
         gameManager.SpawnSpiderman(networkRunner);
 
-        Debug.Log("networkRunner.ActivePlayers.Count() ==" + networkRunner.ActivePlayers.Count());
-        if (networkRunner.ActivePlayers.Count() == 0)
+        Debug.Log("networkRunner.IsSharedModeMasterClient" + networkRunner.IsSharedModeMasterClient);
+        if (networkRunner.IsSharedModeMasterClient)
         {
             Debug.Log("Spawno Coins!");
             gameManager.SpawnCoins(networkRunner);
