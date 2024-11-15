@@ -17,7 +17,9 @@ public class Character : NetworkBehaviour
             Coin coin = other.GetComponent<Coin>();
             if (coin != null)
             {
+                coin.GetComponent<NetworkObject>().RequestStateAuthority();
                 FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
+                
                 // Destroy(coin.gameObject);
                 collectedCoins++;
                 RefreshCoinText();
