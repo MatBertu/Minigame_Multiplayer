@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public NetworkObject coinPrefab;
     public NetworkObject spidermanPrefab;
+    public NetworkObject victoryTextPrefab;
     public Transform spawnPoint;
     public CinemachineVirtualCamera playerFollowCamera;
     // Start is called before the first frame update
@@ -35,5 +36,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    internal void SpawnVictoryText(NetworkRunner networkRunner)
+    {
+        Transform spawnPoint = FindObjectOfType<VictoryTextSpawnPoint>().transform;
+        NetworkObject victoryTextInstantiated = networkRunner.Spawn(coinPrefab, spawnPoint.position, spawnPoint.rotation);
+
     }
 }

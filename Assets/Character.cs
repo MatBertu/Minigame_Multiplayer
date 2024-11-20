@@ -6,6 +6,9 @@ using UnityEngine;
 public class Character : NetworkBehaviour
 {
 
+    [Networked]
+    public string PlayerName { get; set; }
+
 
     [Networked, OnChangedRender(nameof(CollectedCoinsChanged))]
     public int CollectedCoins { get; set; }
@@ -28,7 +31,8 @@ public class Character : NetworkBehaviour
         if (coin == null) { return; }
         if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
-            RPC_AddCoin();
+            RPC_AddCoin(); 
+            CheckEndGame();
             coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
 
 
@@ -38,6 +42,23 @@ public class Character : NetworkBehaviour
             coin.gameObject.SetActive(false);
         }
 
+    }
+
+    private void CheckEndGame()
+    {
+        int leftCoins = FindObjectsOfType<Coin>().Length;
+        if (leftCoins <= 1) 
+        {
+            Character winner = this;
+            foreach (Character character in FindObjectsOfType<Character>())
+            {
+                if (character.CollectedCoins > winner.CollectedCoins)
+                {
+                    winner = character;
+                }
+            }
+            FindObjectOfType<VictoryText>().RPC_ChangeText("Ha vinto " + winner.PlayerName);
+        }
     }
 
     private void RefreshCoinText()

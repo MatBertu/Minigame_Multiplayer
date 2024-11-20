@@ -38,6 +38,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
         {
             Debug.Log("Spawno Coins!");
             gameManager.SpawnCoins(networkRunner);
+            gameManager.SpawnVictoryText(networkRunner);
         }
     }
 
