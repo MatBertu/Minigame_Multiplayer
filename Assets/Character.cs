@@ -28,7 +28,7 @@ public class Character : NetworkBehaviour
         if (coin == null) { return; }
         if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
-            CollectedCoins++;
+            AddCoinRpc();
             coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
 
 
