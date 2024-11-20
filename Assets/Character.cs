@@ -1,7 +1,4 @@
 using Fusion;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,14 +10,14 @@ public class Character : NetworkBehaviour
     {
 
         Coin coin = other.GetComponent<Coin>();
-        if(coin == null) { return; }
+        if (coin == null) { return; }
         if (GetComponent<NetworkObject>().HasStateAuthority)
         {
 
-               
-                FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
-                collectedCoins++;
-                RefreshCoinText();
+
+            FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
+            collectedCoins++;
+            RefreshCoinText();
 
         }
         else
