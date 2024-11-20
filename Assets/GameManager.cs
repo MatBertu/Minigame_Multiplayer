@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     internal void SpawnVictoryText(NetworkRunner networkRunner)
     {
         Transform spawnPoint = FindObjectOfType<VictoryTextSpawnPoint>().transform;
-        NetworkObject victoryTextInstantiated = networkRunner.Spawn(coinPrefab, spawnPoint.position, spawnPoint.rotation);
+        NetworkObject victoryTextInstantiated = networkRunner.Spawn(victoryTextPrefab, spawnPoint.position, spawnPoint.rotation);
 
     }
 }
