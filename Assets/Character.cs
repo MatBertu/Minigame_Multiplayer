@@ -1,7 +1,4 @@
 using Fusion;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,21 +8,19 @@ public class Character : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (GetComponent<NetworkObject>().Runner.IsSharedModeMasterClient)
+        Coin coin = other.GetComponent<Coin>();
+        if (coin != null)
         {
-            Coin coin = other.GetComponent<Coin>();
-            if (coin != null)
+            if (coin.GetComponent<NetworkObject>().HasStateAuthority)
             {
-               
-                FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
-                collectedCoins++;
-                RefreshCoinText();
+                    FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
+                    collectedCoins++;
+                    RefreshCoinText();
             }
-        }
-        else
-        {
-            gameObject.SetActive(false);
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
     }
