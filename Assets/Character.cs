@@ -29,7 +29,7 @@ public class Character : NetworkBehaviour
         if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
 
-            FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
+            coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
             CollectedCoins++;
 
         }
