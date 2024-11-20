@@ -12,7 +12,13 @@ public class Character : NetworkBehaviour
 
     public void CollectedCoinsChanged()
     {
+        RefreshCoinText();
+    }
 
+    public override void Spawned()
+    {
+        base.Spawned();
+        CollectedCoinsChanged();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,11 +26,11 @@ public class Character : NetworkBehaviour
 
         Coin coin = other.GetComponent<Coin>();
         if (coin == null) { return; }
-        if (GetComponent<NetworkObject>().HasStateAuthority)
+        if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
+
             FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
             CollectedCoins++;
-            RefreshCoinText();
 
         }
         else
