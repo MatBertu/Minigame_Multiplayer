@@ -28,7 +28,7 @@ public class Character : NetworkBehaviour
         if (coin == null) { return; }
         if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
-            AddCoinRpc();
+            RPC_AddCoin();
             coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
 
 
@@ -46,8 +46,9 @@ public class Character : NetworkBehaviour
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void AddCoinRpc()
+    public void RPC_AddCoin()
     {
+        Debug.Log(nameof(RPC_AddCoin) + " WAS CALLED");
         CollectedCoins++;
     }
 }
