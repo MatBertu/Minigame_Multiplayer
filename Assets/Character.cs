@@ -1,10 +1,19 @@
 using Fusion;
+using System;
 using TMPro;
 using UnityEngine;
 
 public class Character : NetworkBehaviour
 {
-    public int collectedCoins;
+
+
+    [Networked, OnChangedRender(nameof(CollectedCoinsChanged))]
+    public int CollectedCoins { get; set; }
+
+    public void CollectedCoinsChanged()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,10 +22,8 @@ public class Character : NetworkBehaviour
         if (coin == null) { return; }
         if (GetComponent<NetworkObject>().HasStateAuthority)
         {
-
-
             FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
-            collectedCoins++;
+            CollectedCoins++;
             RefreshCoinText();
 
         }
