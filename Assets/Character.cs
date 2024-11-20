@@ -28,9 +28,9 @@ public class Character : NetworkBehaviour
         if (coin == null) { return; }
         if (coin.GetComponent<NetworkObject>().HasStateAuthority)
         {
-
-            coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
             CollectedCoins++;
+            coin.GetComponent<NetworkObject>().Runner.Despawn(coin.GetComponent<NetworkObject>());
+
 
         }
         else
@@ -43,5 +43,11 @@ public class Character : NetworkBehaviour
     private void RefreshCoinText()
     {
         GetComponentInChildren<TextMeshPro>().text = CollectedCoins.ToString();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void AddCoinRpc()
+    {
+        CollectedCoins++;
     }
 }
