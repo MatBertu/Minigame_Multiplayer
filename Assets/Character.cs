@@ -13,15 +13,15 @@ public class Character : NetworkBehaviour
     {
 
         Coin coin = other.GetComponent<Coin>();
-        if (GetComponent<NetworkObject>().Runner.IsSharedModeMasterClient)
+        if(coin == null) { return; }
+        if (GetComponent<NetworkObject>().HasStateAuthority)
         {
-            if (coin != null)
-            {
+
                
                 FindObjectOfType<NetworkRunner>().Despawn(coin.GetComponent<NetworkObject>());
                 collectedCoins++;
                 RefreshCoinText();
-            }
+
         }
         else
         {
