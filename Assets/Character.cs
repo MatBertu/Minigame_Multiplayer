@@ -36,6 +36,6 @@ public class Character : NetworkBehaviour
 
     private void RefreshCoinText()
     {
-        GetComponentInChildren<TextMeshPro>().text = collectedCoins.ToString();
+        GetComponentInChildren<TextMeshPro>().text = CollectedCoins.ToString();
     }
 }
