@@ -1247,6 +1247,8 @@ MonoBehaviour:
     type: 3}
   spidermanPrefab: {fileID: 7221314192320057903, guid: fc921b8db482e9d41b8abd95ace387d2,
     type: 3}
+  victoryTextPrefab: {fileID: 7354913189253056886, guid: c4fa5889c7ffb3541b33eb31fc33b5db,
+    type: 3}
   spawnPoint: {fileID: 1262337718}
   playerFollowCamera: {fileID: 572466039}
 --- !u!4 &1848559987
